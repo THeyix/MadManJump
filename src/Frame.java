@@ -41,12 +41,7 @@ public class Frame implements ActionListener {
             frame.add(panel);
             frame.setVisible(true);
         }
-        public void paint(Graphics g){
-            Toolkit t = Toolkit.getDefaultToolkit();
-            Image i = t.getImage("Zivilespixeliai.png");
-            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-            g.drawImage(i, screenSize.width, screenSize.height,this);//Tomo uzduotis
-        }
+
         @Override
         public void actionPerformed(ActionEvent e) {
 
