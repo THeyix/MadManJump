@@ -45,7 +45,7 @@ public class Frame implements ActionListener {
             Toolkit t = Toolkit.getDefaultToolkit();
             Image i = t.getImage("Zivilespixeliai.png");
             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-            g.drawImage(i, screenSize.width, screenSize.height,this);
+            g.drawImage(i, screenSize.width, screenSize.height,this);//Tomo uzduotis
         }
         @Override
         public void actionPerformed(ActionEvent e) {
