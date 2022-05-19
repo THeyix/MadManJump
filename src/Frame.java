@@ -9,15 +9,17 @@ public class Frame implements ActionListener {
         JFrame frame;
         JButton exitButton, optionButton, startButton;
         JPanel panel;
+
         Font myFont = new Font("Times New Roman",Font.BOLD,50);
-        Frame() {
+
+        Frame() { // pervadint i main menu
             frame = new JFrame("MadMan Jump");
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            frame.setUndecorated(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            //frame.setUndecorated(true);  //sito manau nereikia
             frame.setLayout(null);
 
             Icon icon = new ImageIcon("Images/Test.png");
-
 
             exitButton = new JButton(icon);
             exitButton.setFont(myFont);
@@ -43,7 +45,6 @@ public class Frame implements ActionListener {
             optionButton.addActionListener(this);
             optionButton.setFocusable(false);
 
-
             panel = new JPanel();
 
             panel.setLayout(null);
@@ -54,7 +55,7 @@ public class Frame implements ActionListener {
             optionButton.setBounds(screenSize.width/2-250, screenSize.height/2+80, 320,80);
 
 
-            ImageIcon background = new ImageIcon("Images/Amogus.png");
+            ImageIcon background = new ImageIcon("Images/mainMenu_bg.png");
             Image image = background.getImage();
             Image scaledimage = image.getScaledInstance(screenSize.width, screenSize.height, java.awt.Image.SCALE_SMOOTH);
             background = new ImageIcon(scaledimage);
@@ -78,6 +79,10 @@ public class Frame implements ActionListener {
 
             if (e.getSource() == exitButton) {
                 System.exit(0);
+            }
+
+            if (e.getSource() == startButton) {
+                new GameStart();
             }
     }
 
