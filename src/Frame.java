@@ -16,10 +16,10 @@ public class Frame implements ActionListener {
             frame = new JFrame("MadMan Jump");
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            //frame.setUndecorated(true);  //sito manau nereikia
+            frame.setUndecorated(true);
             frame.setLayout(null);
 
-            Icon icon = new ImageIcon("Images/Test.png");
+            Icon icon = new ImageIcon("Images/Test.png");//tas random exitas
 
             exitButton = new JButton(icon);
             exitButton.setFont(myFont);
@@ -85,7 +85,7 @@ public class Frame implements ActionListener {
                 new GameStart();
             }
             if (e.getSource() == optionButton) {
-                new Options();
+                //new Options();
             }
     }
 
