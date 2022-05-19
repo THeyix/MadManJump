@@ -84,6 +84,9 @@ public class Frame implements ActionListener {
             if (e.getSource() == startButton) {
                 new GameStart();
             }
+            if (e.getSource() == optionButton) {
+                new Options();
+            }
     }
 
 }
