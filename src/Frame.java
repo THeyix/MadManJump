@@ -6,18 +6,16 @@ import java.awt.font.OpenType;
 
 public class Frame implements ActionListener {
 
-        JFrame frame;
+        //JFrame frame;
         JButton exitButton, optionButton, startButton;
         JPanel panel;
-
         Font myFont = new Font("Times New Roman",Font.BOLD,50);
 
-        Frame() { // pervadint i main menu
-            frame = new JFrame("MadMan Jump");
-            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setUndecorated(true);
-            frame.setLayout(null);
+        Frame() {
+//            frame = new JFrame("MadMan Jump");
+//            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//            frame.setUndecorated(true);
+//            frame.setLayout(null);
 
             Icon icon = new ImageIcon("Images/Test.png");//tas random exitas
 
@@ -68,9 +66,9 @@ public class Frame implements ActionListener {
             panel.add(optionButton);
             panel.add(backgroundLabel);
 
-            frame.add(panel);
+            //frame.add(panel); //============================================== neturim
 
-            frame.setVisible(true);
+            //frame.setVisible(true);
 
         }
 
@@ -82,7 +80,7 @@ public class Frame implements ActionListener {
             }
 
             if (e.getSource() == startButton) {
-                new GameStart();
+                //new GameStart();
             }
             if (e.getSource() == optionButton) {
                 //new Options();
