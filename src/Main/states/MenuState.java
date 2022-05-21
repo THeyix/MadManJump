@@ -17,7 +17,7 @@ public class MenuState extends State {
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUiManager(uiManager);
 
-        uiManager.addObject(new UIImageButton(handler.getWidth()/2+210, handler.getHeight()/2+80, 320,80, Assets.exit, new ClickListener(){
+        uiManager.addObject(new UIImageButton(handler.getWidth()/2+100, handler.getHeight()/2+200, 240,80, Assets.exit, new ClickListener(){
             @Override
             public void onClick() {
                 handler.getMouseManager().setUiManager(null);
@@ -25,7 +25,7 @@ public class MenuState extends State {
             }
         }));
 
-        uiManager.addObject(new UIImageButton(handler.getWidth()/2-50, handler.getHeight()/2-20, 400,80, Assets.start, new ClickListener(){
+        uiManager.addObject(new UIImageButton(handler.getWidth()/2-200, handler.getHeight()/2, 400,150, Assets.start, new ClickListener(){
             @Override
             public void onClick() {
                 handler.getMouseManager().setUiManager(null);
@@ -33,7 +33,7 @@ public class MenuState extends State {
             }
         }));
 
-        uiManager.addObject(new UIImageButton(handler.getWidth()/2-250, handler.getHeight()/2+80, 320,80, Assets.options, new ClickListener(){
+        uiManager.addObject(new UIImageButton(handler.getWidth()/2-400, handler.getHeight()/2+200, 240,80, Assets.options, new ClickListener(){
             @Override
             public void onClick() {
                 handler.getMouseManager().setUiManager(null);
@@ -50,7 +50,7 @@ public class MenuState extends State {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.backGroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
+        g.drawImage(Assets.backgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
         uiManager.render(g);
 
     }

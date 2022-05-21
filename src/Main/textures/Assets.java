@@ -6,15 +6,17 @@ public class Assets {
 
     private static final int width=36, height=36;
 
-    public static BufferedImage player, startButton, hoveredStartButton, optionsButton, hoveredOptionsButton, exitButton,hoveredExitButton, backGroundImage, backButton, hoveredBackButton;
+
+    public static BufferedImage backgroundImage, optionsBackgroundImage;
+    public static BufferedImage player, startButton, hoveredStartButton, optionsButton, hoveredOptionsButton, exitButton,hoveredExitButton, backButton, hoveredBackButton;
     public static BufferedImage[] exit, start, options, back;
 
     public static void init(){
 
         exitButton = ImageLoader.loadImage("res/background/exButton.png");
         hoveredExitButton = ImageLoader.loadImage("res/background/hExButton.png");
-        startButton = ImageLoader.loadImage("res/background/stButton.png");
-        hoveredStartButton = ImageLoader.loadImage("res/background/hStButton.png");
+        startButton = ImageLoader.loadImage("res/buttonImage/startButtonImage.png");
+        hoveredStartButton = ImageLoader.loadImage("res/buttonImage/hoveredStartButtonImage.png");
         optionsButton = ImageLoader.loadImage("res/background/opButton.png");
         hoveredOptionsButton = ImageLoader.loadImage("res/background/hOpButton.png");
         backButton = ImageLoader.loadImage("res/background/bkButton.png");
@@ -25,6 +27,8 @@ public class Assets {
         options = new BufferedImage[]{optionsButton, hoveredOptionsButton};
         back = new BufferedImage[]{backButton, hoveredBackButton};
 
-        backGroundImage = ImageLoader.loadImage("res/background/mainMenu_bg.png");
+        backgroundImage = ImageLoader.loadImage("res/background/mainMenuImage.png");
+        optionsBackgroundImage = ImageLoader.loadImage("res/background/optionsBackgroundImage.png");
+
     }
 }

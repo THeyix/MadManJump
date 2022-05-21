@@ -18,7 +18,7 @@ public class OptionsState extends State {
         uiManager = handler.getMouseManager().getUiManager();
         handler.getMouseManager().setUiManager(uiManager);
 
-        uiManager.addObject(new UIImageButton(handler.getWidth()/2+210, handler.getHeight()/2+80, 320,80, Assets.back, new ClickListener(){
+        uiManager.addObject(new UIImageButton(handler.getWidth()/2-180, handler.getHeight()/2+250, 320,80, Assets.back, new ClickListener(){
             @Override
             public void onClick() {
                 handler.getMouseManager().setUiManager(null);
@@ -36,7 +36,7 @@ public class OptionsState extends State {
     @Override
     public void render(Graphics g) {
 
-        g.drawImage(Assets.backGroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
+        g.drawImage(Assets.optionsBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
         uiManager.render(g);
 
     }
