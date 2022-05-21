@@ -1,13 +1,13 @@
+package Main.textures;
+
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class ImageLoader {
 
-    public static BufferedImage loadeImage(String path){
+    public static BufferedImage loadImage(String path){
         try{
             return ImageIO.read(new File(path));
         } catch (IOException e) {

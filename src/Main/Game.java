@@ -1,14 +1,21 @@
-import javax.swing.*;
+package Main;
+
+import Main.display.Display;
+import Main.imput.KeyManager;
+import Main.imput.MouseManager;
+import Main.states.GameState;
+import Main.states.MenuState;
+import Main.states.State;
+import Main.textures.Assets;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.security.Key;
 
 public class Game implements Runnable{
 
     private Display display;
     public String title;
-    public int width, height;
+    private int width, height;
 
     private boolean running = false;
     private Thread thread;
@@ -16,15 +23,15 @@ public class Game implements Runnable{
     private BufferStrategy bs;
     private Graphics g;
 
-    private BufferedImage backgroundtest;
-
     //States
-    private State gameState;
-    private State menuState;
+    public State gameState;
+    public State menuState;
 
     //Input
     private KeyManager keyManager;
+    private MouseManager mouseManager;
 
+    //Main.Handler
     private Handler handler;
 
     public Game(String title, int width, int height){
@@ -32,18 +39,23 @@ public class Game implements Runnable{
         this.width = width;
         this.height = height;
         keyManager = new KeyManager();
+        mouseManager = new MouseManager();
 
     }
 
     private void init(){
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
-        backgroundtest = ImageLoader.loadeImage("res/background/mainMenu_bg.png");
+        display.getFrame().addMouseListener(mouseManager);
+        display.getFrame().addMouseMotionListener(mouseManager);
+        display.getCanvas().addMouseListener(mouseManager);
+        display.getCanvas().addMouseMotionListener(mouseManager);
+        Assets.init();
 
         handler = new Handler(this);
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
-        State.setState(gameState);
+        State.setState(menuState);
     }
 
     private void tick(){
@@ -62,9 +74,8 @@ public class Game implements Runnable{
         g.clearRect(0,0, width, height);
         // We can draw here
 
-        g.drawImage(backgroundtest, 0, 0, width, height, null);
-//        if(State.getState() != null)
-//            State.getState().render(g);
+        if(State.getState() != null)
+            State.getState().render(g);
 
         //Draw ends here
 
@@ -86,6 +97,10 @@ public class Game implements Runnable{
 
     public KeyManager getKeyManager(){
         return keyManager;
+    }
+
+    public MouseManager getMouseManager(){
+        return mouseManager;
     }
 
     public int getWidth() {

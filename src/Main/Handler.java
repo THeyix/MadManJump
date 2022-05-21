@@ -1,3 +1,8 @@
+package Main;
+
+import Main.imput.KeyManager;
+import Main.imput.MouseManager;
+
 public class Handler {
 
     private Game game;
@@ -9,11 +14,15 @@ public class Handler {
     }
 
 //    public GameCamera getGameCamera(){
-//        return game.getGameCamera;
+//        return game.getGameCamera(;
 //    }
-//    public KeyManager getKeyManager(){
-//        return game.getKeyManager;
-//    }
+    public KeyManager getKeyManager(){
+        return game.getKeyManager();
+    }
+
+    public MouseManager getMouseManager(){
+        return game.getMouseManager();
+    }
 
     public int getWidth(){
         return game.getWidth();

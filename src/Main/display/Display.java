@@ -1,9 +1,11 @@
+package Main.display;
+
 import java.awt.*;
 import javax.swing.JFrame;
 
 public class Display {
 
-    private JFrame frame;//turim
+    private JFrame frame;
     private Canvas canvas;
     private String title;
     public int width, height;
@@ -19,12 +21,12 @@ public class Display {
     private void createDisplay(){
         frame = new JFrame(title);
 
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);//GALIMAI REIKES CHECKINTI
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//nereik
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//if there is error (alt+f4) and program will shut down
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setUndecorated(true);
-        frame.setVisible(true);//turim
+        frame.setVisible(true);
 
         canvas = new Canvas();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

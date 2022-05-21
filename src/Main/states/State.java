@@ -1,5 +1,8 @@
+package Main.states;
+
+import Main.Handler;
+
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public abstract class State {
 

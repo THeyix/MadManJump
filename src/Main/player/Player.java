@@ -1,3 +1,7 @@
+package Main.player;
+
+import Main.Game;
+
 public class Player{
 
     private Game game;
