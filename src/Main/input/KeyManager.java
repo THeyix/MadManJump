@@ -12,7 +12,7 @@ public class KeyManager implements KeyListener {
     private UIManager uiManager;
 
     public KeyManager(){
-        keys = new boolean[256];
+        keys = new boolean[525];
     }
 
     public void tick(){

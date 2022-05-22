@@ -15,12 +15,16 @@ public class Assets {
 
         exitButton = ImageLoader.loadImage("res/background/exButton.png");
         hoveredExitButton = ImageLoader.loadImage("res/background/hExButton.png");
+
         startButton = ImageLoader.loadImage("res/buttonImage/startButtonImage.png");
         hoveredStartButton = ImageLoader.loadImage("res/buttonImage/hoveredStartButtonImage.png");
+
         optionsButton = ImageLoader.loadImage("res/background/opButton.png");
         hoveredOptionsButton = ImageLoader.loadImage("res/background/hOpButton.png");
+
         backButton = ImageLoader.loadImage("res/background/bkButton.png");
         hoveredBackButton = ImageLoader.loadImage("res/background/hBkButton.png");
+
 
         exit = new BufferedImage[]{exitButton, hoveredExitButton};
         start = new BufferedImage[]{startButton, hoveredStartButton};
@@ -28,9 +32,8 @@ public class Assets {
         back = new BufferedImage[]{backButton, hoveredBackButton};
 
         backgroundImage = ImageLoader.loadImage("res/background/mainMenuImage.png");
-        optionsBackgroundImage = ImageLoader.loadImage("res/background/optionsBackgroundImage.png");
+        optionsBackgroundImage = ImageLoader.loadImage("res/background/optionBG.png");
         firstStageBackgroundImage = ImageLoader.loadImage("res/background/mainMenu_bg.png");
-
 
         player = ImageLoader.loadImage("res/playerImage/playerImage.png");
 

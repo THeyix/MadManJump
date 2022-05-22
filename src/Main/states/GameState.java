@@ -4,6 +4,7 @@ import Main.Handler;
 import Main.UI.ClickListener;
 import Main.UI.UIImageButton;
 import Main.UI.UIManager;
+import Main.textures.Wall;
 import Main.player.Player;
 import Main.textures.Assets;
 
@@ -14,12 +15,15 @@ public class GameState extends State {
     private UIManager uiManager;
     private Player player;
 
+    public Wall wall;
+
     public State EscState;
 
     public GameState(Handler handler){
         super(handler);
         uiManager = new UIManager(handler);
-        player = new Player(handler, 600, 600);
+        player = new Player(handler, 600, 100);
+        wall = new Wall(handler, 0, 1000, handler.getWidth(), 100);
 
         handler.getKeyManager().setUiManager(uiManager);
 
@@ -43,7 +47,8 @@ public class GameState extends State {
     public void render(Graphics g) {
 
         g.drawImage(Assets.firstStageBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
-        player.render(g);
 
+        wall.render(g);
+        player.render(g);
     }
 }

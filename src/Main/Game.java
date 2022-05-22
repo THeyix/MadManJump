@@ -7,6 +7,7 @@ import Main.states.GameState;
 import Main.states.MenuState;
 import Main.states.State;
 import Main.textures.Assets;
+import Main.textures.Wall;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -34,13 +35,13 @@ public class Game implements Runnable{
     //Main.Handler
     private Handler handler;
 
+
     public Game(String title, int width, int height){
         this.title = title;
         this.width = width;
         this.height = height;
         keyManager = new KeyManager();
         mouseManager = new MouseManager();
-
     }
 
     private void init(){
@@ -120,6 +121,7 @@ public class Game implements Runnable{
     public void setHeight(int height) {
         this.height = height;
     }
+
 
     public synchronized void start(){
         if(running)

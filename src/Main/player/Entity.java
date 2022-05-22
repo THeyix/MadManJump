@@ -2,9 +2,11 @@ package Main.player;
 
 import java.awt.*;
 
-public abstract class Entity {
+public abstract class Entity{
 
     protected float x, y;
+    protected boolean falling = true;
+    protected boolean jumping = false;
 
     public Entity(float x, float y){
         this.x = x;
@@ -15,4 +17,19 @@ public abstract class Entity {
 
     public abstract void render(Graphics g);
 
+    public boolean isFalling() {
+        return falling;
+    }
+
+    public void setFalling(boolean falling) {
+        this.falling = falling;
+    }
+
+    public boolean isJumping() {
+        return jumping;
+    }
+
+    public void setJumping(boolean jumping) {
+        this.jumping = jumping;
+    }
 }

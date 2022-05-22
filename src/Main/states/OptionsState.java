@@ -37,6 +37,7 @@ public class OptionsState extends State {
     public void render(Graphics g) {
 
         g.drawImage(Assets.optionsBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
+
         uiManager.render(g);
 
     }
