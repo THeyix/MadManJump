@@ -1,7 +1,7 @@
 package Main;
 
-import Main.imput.KeyManager;
-import Main.imput.MouseManager;
+import Main.input.KeyManager;
+import Main.input.MouseManager;
 
 public class Handler {
 

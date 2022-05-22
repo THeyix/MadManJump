@@ -1,8 +1,8 @@
 package Main;
 
 import Main.display.Display;
-import Main.imput.KeyManager;
-import Main.imput.MouseManager;
+import Main.input.KeyManager;
+import Main.input.MouseManager;
 import Main.states.GameState;
 import Main.states.MenuState;
 import Main.states.State;

@@ -1,4 +1,4 @@
-package Main.imput;
+package Main.input;
 
 import Main.UI.UIManager;
 
