@@ -13,9 +13,6 @@ public class Handler {
 
     }
 
-//    public GameCamera getGameCamera(){
-//        return game.getGameCamera(;
-//    }
     public KeyManager getKeyManager(){
         return game.getKeyManager();
     }

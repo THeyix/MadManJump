@@ -32,5 +32,8 @@ public class Assets {
         firstStageBackgroundImage = ImageLoader.loadImage("res/background/mainMenu_bg.png");
 
 
+        player = ImageLoader.loadImage("res/playerImage/playerImage.png");
+
+
     }
 }
