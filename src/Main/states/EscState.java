@@ -36,7 +36,7 @@ public class EscState extends State {
     @Override
     public void render(Graphics g) {
 
-        g.drawImage(Assets.optionsBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
+        g.drawImage(Assets.escBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
         uiManager.render(g);
 
     }

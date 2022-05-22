@@ -13,9 +13,9 @@ import java.awt.*;
 public class Player extends Entity{
 
     private Handler handler;
-    private float gravity = 0.1f;
-    private float maxSpeed = 1000000;
-    private float yVel;
+//    private float gravity = 0.1f;
+//    private float maxSpeed = 1000000;
+//    private float yVel;
 
 
     public Player(Handler handler, float x, float y){
@@ -26,7 +26,7 @@ public class Player extends Entity{
     @Override
     public void tick() {
 
-        y = yVel;
+//        y = yVel;
 
         if(handler.getKeyManager().left)
             x -= 1;
@@ -57,18 +57,18 @@ public class Player extends Entity{
 //        }
 //    }
 
-    public Rectangle getBounds(){
-        return new Rectangle((int)x, (int)y, 32, 32);
-    }
-    public Rectangle getBoundsTop(){
-        return new Rectangle((int)x, (int)y, 32, 32);
-    }
-    public Rectangle getBoundsRight(){
-        return new Rectangle((int)x, (int)y, 32, 32);
-    }
-    public Rectangle getBoundsLeft(){
-        return new Rectangle((int)x, (int)y, 32, 32); // bounds gonna be changed
-    }
+//    public Rectangle getBounds(){
+//        return new Rectangle((int)x, (int)y, 32, 32);
+//    }
+//    public Rectangle getBoundsTop(){
+//        return new Rectangle((int)x, (int)y, 32, 32);
+//    }
+//    public Rectangle getBoundsRight(){
+//        return new Rectangle((int)x, (int)y, 32, 32);
+//    }
+//    public Rectangle getBoundsLeft(){
+//        return new Rectangle((int)x, (int)y, 32, 32); // bounds gonna be changed
+//    }
 
     @Override
     public void render(Graphics g) {

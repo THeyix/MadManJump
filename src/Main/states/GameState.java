@@ -22,8 +22,8 @@ public class GameState extends State {
     public GameState(Handler handler){
         super(handler);
         uiManager = new UIManager(handler);
-        player = new Player(handler, 600, 100);
-        wall = new Wall(handler, 0, 1000, handler.getWidth(), 100);
+        player = new Player(handler, 600, 600);
+//        wall = new Wall(handler, 0, 1000, handler.getWidth(), 100);
 
         handler.getKeyManager().setUiManager(uiManager);
 
@@ -48,7 +48,7 @@ public class GameState extends State {
 
         g.drawImage(Assets.firstStageBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
 
-        wall.render(g);
+//        wall.render(g);
         player.render(g);
     }
 }
