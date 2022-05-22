@@ -1,16 +1,21 @@
-package Main.player;
+package Main.entities;
+
+import Main.Handler;
 
 import java.awt.*;
 
 public abstract class Entity{
 
+    protected Handler handler;
     protected float x, y;
     protected boolean falling = true;
     protected boolean jumping = false;
 
+
     public Entity(float x, float y){
         this.x = x;
         this.y = y;
+
     }
 
     public abstract void tick();

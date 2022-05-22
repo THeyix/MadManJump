@@ -1,12 +1,10 @@
-package Main.player;
+package Main.entities;
 
 import Main.Handler;
 import Main.UI.UIManager;
 import Main.states.EscState;
-import Main.states.MenuState;
 import Main.states.State;
 import Main.textures.Assets;
-import Main.textures.Wall;
 
 import java.awt.*;
 
@@ -21,7 +19,21 @@ public class Player extends Entity{
     public Player(Handler handler, float x, float y){
         super(x, y);
         this.handler = handler;
+
+
+        //Animatons
+//         = new Animation(500, Assets.player_jumpLeft);
+//         = new Animation(500, Assets.player_jumpRight);
+//         = new Animation(500, Assets.player_landLeft);
+//         = new Animation(500, Assets.player_landRight);
+//         = new Animation(500, Assets.player_fallLeft);
+//         = new Animation(500, Assets.player_fallRight);
+//         = new Animation(500, Assets.player_feltOnTheGround);
+//         = new Animation(500, Assets.player_crouch);
+//         = new Animation(500, Assets.player_left);
+//        animRight = new Animation(500, Assets.player_right);
     }
+
 
     @Override
     public void tick() {
@@ -32,8 +44,8 @@ public class Player extends Entity{
             x -= 1;
         if(handler.getKeyManager().right)
             x += 1;
-        //if(handler.getKeyManager().jump)
-            //ojoj cia bus blogai
+//        if(handler.getKeyManager().jump)
+
 
 //        if(falling || jumping){
 //            yVel += gravity;
@@ -50,7 +62,7 @@ public class Player extends Entity{
 
     }
 
-//    private void collission(){
+//    private void collision(){
 //        if(getBounds().intersects(wall.getBounds())){
 //            y = wall.getY() - height;
 //            yVel = 0;

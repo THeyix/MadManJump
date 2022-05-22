@@ -7,7 +7,7 @@ import Main.states.GameState;
 import Main.states.MenuState;
 import Main.states.State;
 import Main.textures.Assets;
-import Main.textures.Wall;
+import Main.entities.Wall;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -34,6 +34,8 @@ public class Game implements Runnable{
 
     //Main.Handler
     private Handler handler;
+
+    private Wall wall;
 
 
     public Game(String title, int width, int height){

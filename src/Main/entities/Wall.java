@@ -1,4 +1,4 @@
-package Main.textures;
+package Main.entities;
 
 import Main.Handler;
 

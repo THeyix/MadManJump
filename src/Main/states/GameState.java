@@ -4,8 +4,8 @@ import Main.Handler;
 import Main.UI.ClickListener;
 import Main.UI.UIImageButton;
 import Main.UI.UIManager;
-import Main.textures.Wall;
-import Main.player.Player;
+import Main.entities.Wall;
+import Main.entities.Player;
 import Main.textures.Assets;
 
 import java.awt.*;
@@ -41,7 +41,9 @@ public class GameState extends State {
     public void tick() {
 
         player.tick();
+
     }
+
 
     @Override
     public void render(Graphics g) {
