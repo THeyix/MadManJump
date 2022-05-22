@@ -2,6 +2,7 @@ package Main.player;
 
 import Main.Handler;
 import Main.UI.UIManager;
+import Main.states.EscState;
 import Main.states.MenuState;
 import Main.states.State;
 import Main.textures.Assets;
@@ -29,7 +30,7 @@ public class Player extends Entity{
         if(handler.getKeyManager().escape) {
             handler.getMouseManager().setUiManager(null);
             handler.getMouseManager().setUiManager(new UIManager(handler));
-            State.setState(new MenuState(handler));}
+            State.setState(new EscState(handler));}
     }
 
     @Override

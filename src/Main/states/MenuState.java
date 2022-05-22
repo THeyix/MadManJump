@@ -52,6 +52,5 @@ public class MenuState extends State {
     public void render(Graphics g) {
         g.drawImage(Assets.backgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
         uiManager.render(g);
-
     }
 }
