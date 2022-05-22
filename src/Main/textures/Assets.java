@@ -7,7 +7,7 @@ public class Assets {
     private static final int width=36, height=36;
 
 
-    public static BufferedImage backgroundImage, optionsBackgroundImage;
+    public static BufferedImage backgroundImage, optionsBackgroundImage, firstStageBackgroundImage;
     public static BufferedImage player, startButton, hoveredStartButton, optionsButton, hoveredOptionsButton, exitButton,hoveredExitButton, backButton, hoveredBackButton;
     public static BufferedImage[] exit, start, options, back;
 
@@ -29,6 +29,8 @@ public class Assets {
 
         backgroundImage = ImageLoader.loadImage("res/background/mainMenuImage.png");
         optionsBackgroundImage = ImageLoader.loadImage("res/background/optionsBackgroundImage.png");
+        firstStageBackgroundImage = ImageLoader.loadImage("res/background/mainMenu_bg.png");
+
 
     }
 }

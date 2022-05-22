@@ -6,7 +6,7 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener {
 
     private boolean[] keys;
-    public boolean right, left, jump;
+    public boolean right, left, jump, escape;
 
     public KeyManager(){
         keys = new boolean[256];
@@ -16,12 +16,12 @@ public class KeyManager implements KeyListener {
         right = keys[KeyEvent.VK_D];
         left = keys[KeyEvent.VK_A];
         jump = keys[KeyEvent.VK_SPACE];
+        escape = keys[KeyEvent.VK_ESCAPE];
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         keys[e.getKeyCode()] = true;
-        System.out.println("Pressed");
     }
 
     @Override
