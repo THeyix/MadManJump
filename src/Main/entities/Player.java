@@ -8,19 +8,20 @@ import Main.textures.Assets;
 
 import java.awt.*;
 
-public class Player extends Entity{
+public class Player extends MovementLogic {
 
-    private Handler handler;
 //    private float gravity = 0.1f;
 //    private float maxSpeed = 1000000;
 //    private float yVel;
 
 
-    public Player(Handler handler, float x, float y){
-        super(x, y);
-        this.handler = handler;
+    public Player(Handler handler, float x, float y, int width, int height) {
+        super(handler, x, y, width, height);
 
-
+        boundsLeft.x = 0;
+        boundsLeft.y = 10;
+        boundsLeft.width = width / 5;
+        boundsLeft.height = height-10;
         //Animatons
 //         = new Animation(500, Assets.player_jumpLeft);
 //         = new Animation(500, Assets.player_jumpRight);
@@ -32,20 +33,32 @@ public class Player extends Entity{
 //         = new Animation(500, Assets.player_crouch);
 //         = new Animation(500, Assets.player_left);
 //        animRight = new Animation(500, Assets.player_right);
+        //TODO animacijos neturi but cia
     }
 
 
     @Override
     public void tick() {
+        getInput();
+        move();
+    }
 
-//        y = yVel;
+    public void getInput(){
+        xMove = 0;
+        yMove = 0;
 
         if(handler.getKeyManager().left)
-            x -= 1;
-        if(handler.getKeyManager().right)
-            x += 1;
-//        if(handler.getKeyManager().jump)
+            xMove = -speed;
 
+        if(handler.getKeyManager().right)
+            xMove = speed;
+
+        if(handler.getKeyManager().escape) {
+            handler.getMouseManager().setUiManager(null);
+            handler.getMouseManager().setUiManager(new UIManager(handler));
+            State.setState(new EscState(handler));}
+
+//        if(handler.getKeyManager().jump)
 
 //        if(falling || jumping){
 //            yVel += gravity;
@@ -54,36 +67,11 @@ public class Player extends Entity{
 //                yVel = maxSpeed;
 //            }
 //        }
-
-        if(handler.getKeyManager().escape) {
-            handler.getMouseManager().setUiManager(null);
-            handler.getMouseManager().setUiManager(new UIManager(handler));
-            State.setState(new EscState(handler));}
-
     }
-
-//    private void collision(){
-//        if(getBounds().intersects(wall.getBounds())){
-//            y = wall.getY() - height;
-//            yVel = 0;
-//        }
-//    }
-
-//    public Rectangle getBounds(){
-//        return new Rectangle((int)x, (int)y, 32, 32);
-//    }
-//    public Rectangle getBoundsTop(){
-//        return new Rectangle((int)x, (int)y, 32, 32);
-//    }
-//    public Rectangle getBoundsRight(){
-//        return new Rectangle((int)x, (int)y, 32, 32);
-//    }
-//    public Rectangle getBoundsLeft(){
-//        return new Rectangle((int)x, (int)y, 32, 32); // bounds gonna be changed
-//    }
 
     @Override
     public void render(Graphics g) {
         g.drawImage(Assets.player, (int) x, (int) y, null);
+        g.drawRect((int) x, (int) y, boundsLeft.width, boundsLeft.height);
     }
 }

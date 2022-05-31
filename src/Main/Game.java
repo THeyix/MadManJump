@@ -35,8 +35,6 @@ public class Game implements Runnable{
     //Main.Handler
     private Handler handler;
 
-    private Wall wall;
-
 
     public Game(String title, int width, int height){
         this.title = title;

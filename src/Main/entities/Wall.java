@@ -1,20 +1,16 @@
 package Main.entities;
 
 import Main.Handler;
+import Main.Scenes.SceneManager;
 
 import java.awt.*;
 
-public class Wall {
+public class Wall extends SceneManager {
 
-    private Handler handler;
     private int x, y, width, height;
 
-    public Wall(Handler handler, int x, int y, int width, int height) {
-        this.handler = handler;
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    public Wall(Handler handler, int x, int y, int width, int height){
+        super(handler, x, y, width, height);
     }
 
     public void tick() {
@@ -24,6 +20,9 @@ public class Wall {
     public void render(Graphics g) {
         g.setColor(Color.black);
         g.fillRect(x, y, width, height);
+        g.setColor(Color.white);
+        getWallBoundsLeft();
+        g.fillRect(300, y, 200, height);
     }
 
     public int getX() {
@@ -57,17 +56,16 @@ public class Wall {
     public void setHeight(int height) {
         this.height = height;
     }
-    public Rectangle getBounds(){
-        return new Rectangle((int)x, (int)y, 32, 32);
+//    public Rectangle getBounds(){
+//        return new Rectangle(x, y, 32, 32);
+//    }
+//    public Rectangle getBoundsTop(){
+//        return new Rectangle(x, y, 32, 32);
+//    }
+//    public Rectangle getBoundsRight(){
+//        return new Rectangle(x, y, 32, 32);
+//    }
+    public Rectangle getWallBoundsLeft() {
+        return new Rectangle(300, y, 50, height); // bounds gonna be changed
     }
-    public Rectangle getBoundsTop(){
-        return new Rectangle((int)x, (int)y, 32, 32);
-    }
-    public Rectangle getBoundsRight(){
-        return new Rectangle((int)x, (int)y, 32, 32);
-    }
-    public Rectangle getBoundsLeft() {
-        return new Rectangle((int) x, (int) y, 32, 32); // bounds gonna be changed
-    }
-
 }

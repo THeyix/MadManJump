@@ -15,15 +15,15 @@ public class GameState extends State {
     private UIManager uiManager;
     private Player player;
 
-    public Wall wall;
+    public static Wall wall;
 
     public State EscState;
 
     public GameState(Handler handler){
         super(handler);
         uiManager = new UIManager(handler);
-        player = new Player(handler, 600, 600);
-//        wall = new Wall(handler, 0, 1000, handler.getWidth(), 100);
+        player = new Player(handler, 600, 600, 32, 50);//width and height not final, depends on the players final model
+        wall = new Wall(handler, 0, 0, 500, handler.getHeight());
 
         handler.getKeyManager().setUiManager(uiManager);
 
@@ -50,7 +50,9 @@ public class GameState extends State {
 
         g.drawImage(Assets.firstStageBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
 
-//        wall.render(g);
+        wall.render(g);
         player.render(g);
     }
+
+
 }
