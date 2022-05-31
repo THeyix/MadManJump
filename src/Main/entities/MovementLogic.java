@@ -4,7 +4,7 @@ import Main.Handler;
 
 import java.awt.*;
 
-public class MovementLogic {
+public abstract class MovementLogic {
 
     public static final float DEFAULT_SPEED = 1f;
 
@@ -64,9 +64,9 @@ public class MovementLogic {
         return false;
     }
 
-    //public abstract void tick(); //cannot override without these
+    public abstract void tick(); //cannot override without these
 
-    //public abstract void render(Graphics g);// same here
+    public abstract void render(Graphics g);// same here
 
     public float getxMove() {
         return xMove;
