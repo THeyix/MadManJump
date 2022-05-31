@@ -4,7 +4,7 @@ import Main.Handler;
 
 import java.awt.*;
 
-public abstract class MovementLogic {
+public class MovementLogic {
 
     public static final float DEFAULT_SPEED = 1f;
 
@@ -58,15 +58,15 @@ public abstract class MovementLogic {
     }
 
     protected boolean collisionWithWall(int x, int y){
-        if(Wall.getWallBoundsLeft().intersects()){
-            return true;
-        }
+//        if(Wall.getLeftWallBounds().getLeftWallBounds().intersects(getBoundsLeft())){
+//            return true;
+//        }
         return false;
     }
 
-    public abstract void tick(); //cannot override without these
+    //public abstract void tick(); //cannot override without these
 
-    public abstract void render(Graphics g);// same here
+    //public abstract void render(Graphics g);// same here
 
     public float getxMove() {
         return xMove;

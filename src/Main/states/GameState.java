@@ -39,20 +39,15 @@ public class GameState extends State {
 
     @Override
     public void tick() {
-
         player.tick();
-
     }
 
 
     @Override
     public void render(Graphics g) {
-
         g.drawImage(Assets.firstStageBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
 
         wall.render(g);
         player.render(g);
     }
-
-
 }

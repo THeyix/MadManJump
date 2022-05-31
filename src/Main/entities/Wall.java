@@ -21,7 +21,7 @@ public class Wall extends SceneManager {
         g.setColor(Color.black);
         g.fillRect(x, y, width, height);
         g.setColor(Color.white);
-        getWallBoundsLeft();
+        getLeftWallBounds();
         g.fillRect(300, y, 200, height);
     }
 
@@ -65,7 +65,7 @@ public class Wall extends SceneManager {
 //    public Rectangle getBoundsRight(){
 //        return new Rectangle(x, y, 32, 32);
 //    }
-    public Rectangle getWallBoundsLeft() {
+    public Rectangle getLeftWallBounds() {
         return new Rectangle(300, y, 50, height); // bounds gonna be changed
     }
 }
