@@ -8,8 +8,8 @@ public class Assets {
 
 
     public static BufferedImage backgroundImage, optionsBackgroundImage, firstStageBackgroundImage, escBackgroundImage;
-    public static BufferedImage player, startButton, hoveredStartButton, optionsButton, hoveredOptionsButton, exitButton,hoveredExitButton, backButton, hoveredBackButton;
-    public static BufferedImage[] exit, start, options, back;
+    public static BufferedImage player, startButton, hoveredStartButton, optionsButton, hoveredOptionsButton, exitButton,hoveredExitButton, backButton, hoveredBackButton, resumeButton, hoveredResumeButton, restartButton, hoveredRestartButton, settingsButton, hoveredSettingsButton, menuButton, hoveredMenuButton;
+    public static BufferedImage[] exit, start, options, back, resume, settings, menu;
 
     public static void init(){
 
@@ -25,11 +25,23 @@ public class Assets {
         backButton = ImageLoader.loadImage("res/buttonImage/backButton.png");
         hoveredBackButton = ImageLoader.loadImage("res/buttonImage/hoveredBackButton.png");
 
+        resumeButton = ImageLoader.loadImage("res/buttonImage/resumeButton.png");
+        hoveredResumeButton = ImageLoader.loadImage("res/buttonImage/hoveredResumeButton.png");
+
+        settingsButton = ImageLoader.loadImage("res/buttonImage/settingsButton.png");
+        hoveredSettingsButton = ImageLoader.loadImage("res/buttonImage/hoveredSettingsButton.png");
+
+        menuButton = ImageLoader.loadImage("res/buttonImage/menuButton.png");
+        hoveredMenuButton = ImageLoader.loadImage("res/buttonImage/hoveredMenuButton.png");
+
 
         exit = new BufferedImage[]{exitButton, hoveredExitButton};
         start = new BufferedImage[]{startButton, hoveredStartButton};
         options = new BufferedImage[]{optionsButton, hoveredOptionsButton};
         back = new BufferedImage[]{backButton, hoveredBackButton};
+        resume = new BufferedImage[]{resumeButton, hoveredResumeButton};
+        settings = new BufferedImage[]{settingsButton, hoveredSettingsButton};
+        menu = new BufferedImage[]{menuButton, hoveredMenuButton};
 
         backgroundImage = ImageLoader.loadImage("res/background/mainMenuImage.png");
         optionsBackgroundImage = ImageLoader.loadImage("res/background/optionsBackgroundImage.png");

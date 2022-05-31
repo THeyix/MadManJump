@@ -18,7 +18,7 @@ public class EscState extends State {
         uiManager = handler.getMouseManager().getUiManager();
         handler.getMouseManager().setUiManager(uiManager);
 
-        uiManager.addObject(new UIImageButton(handler.getWidth()/2-180, handler.getHeight()/2, 320,80, Assets.back, new ClickListener(){
+        uiManager.addObject(new UIImageButton(handler.getWidth()/2-140, handler.getHeight()/2, 240,80, Assets.resume, new ClickListener(){
             @Override
             public void onClick() {
                 handler.getMouseManager().setUiManager(null);
@@ -28,7 +28,7 @@ public class EscState extends State {
             }
         }));
 
-        uiManager.addObject(new UIImageButton(handler.getWidth()/2-180, handler.getHeight()/2+150, 320,80, Assets.back, new ClickListener(){
+        uiManager.addObject(new UIImageButton(handler.getWidth()/2-140, handler.getHeight()/2+150, 240,80, Assets.settings, new ClickListener(){
             @Override
             public void onClick() {
                 handler.getMouseManager().setUiManager(null);
@@ -38,7 +38,7 @@ public class EscState extends State {
             }
         }));
 
-        uiManager.addObject(new UIImageButton(handler.getWidth()/2-180, handler.getHeight()/2+300, 320,80, Assets.exit, new ClickListener(){
+        uiManager.addObject(new UIImageButton(handler.getWidth()/2-140, handler.getHeight()/2+300, 240,80, Assets.menu, new ClickListener(){
             @Override
             public void onClick() {
                 handler.getMouseManager().setUiManager(null);

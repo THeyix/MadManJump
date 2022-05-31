@@ -56,6 +56,7 @@ public class Wall extends SceneManager {
     public void setHeight(int height) {
         this.height = height;
     }
+
 //    public Rectangle getBounds(){
 //        return new Rectangle(x, y, 32, 32);
 //    }
@@ -65,6 +66,7 @@ public class Wall extends SceneManager {
 //    public Rectangle getBoundsRight(){
 //        return new Rectangle(x, y, 32, 32);
 //    }
+
     public Rectangle getLeftWallBounds() {
         return new Rectangle(300, y, 50, height); // bounds gonna be changed
     }

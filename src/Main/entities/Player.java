@@ -71,7 +71,7 @@ public class Player extends MovementLogic {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.player, (int) x, (int) y, null);
+        g.drawImage(Assets.player, (int) x, (int) y, null);// after int x, int y, 40, 70 must be;(could be changed)
         g.drawRect((int) x, (int) y, boundsLeft.width, boundsLeft.height);
     }
 }

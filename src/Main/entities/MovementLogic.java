@@ -58,7 +58,7 @@ public abstract class MovementLogic {
     }
 
     protected boolean collisionWithWall(int x, int y){
-//        if(Wall.getLeftWallBounds().getLeftWallBounds().intersects(getBoundsLeft())){
+//        if(Wall.getLeftWallBounds().intersects(getBoundsLeft())){
 //            return true;
 //        }
         return false;
