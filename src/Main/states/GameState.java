@@ -15,7 +15,7 @@ public class GameState extends State {
     private UIManager uiManager;
     private Player player;
 
-    public static Wall wall;
+    public static Wall leftWall, rightWall;
 
     public State EscState;
 
@@ -23,10 +23,10 @@ public class GameState extends State {
         super(handler);
         uiManager = new UIManager(handler);
         player = new Player(handler, 600, 600, 32, 50);//width and height not final, depends on the players final model
-        wall = new Wall(handler, 0, 0, 500, handler.getHeight());
+        leftWall = new Wall(handler, 0, 0, 200, handler.getHeight());
+        rightWall = new Wall(handler, handler.getWidth()-200, 0, 200, handler.getHeight());
 
         handler.getKeyManager().setUiManager(uiManager);
-
         uiManager.addObject(new UIImageButton(handler.getWidth()/2-400, handler.getHeight()/2+200, 240,80, Assets.options, new ClickListener(){
             @Override
             public void onClick() {
@@ -47,7 +47,8 @@ public class GameState extends State {
     public void render(Graphics g) {
         g.drawImage(Assets.firstStageBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
 
-        wall.render(g);
+        leftWall.render(g);
+        rightWall.render(g);
         player.render(g);
     }
 }

@@ -1,16 +1,23 @@
 package Main.entities;
 
 import Main.Handler;
-import Main.Scenes.SceneManager;
 
 import java.awt.*;
 
-public class Wall extends SceneManager {
-
-    private int x, y, width, height;
+public class Wall {
+    private static Handler handler;
+    private int x;
+    private static int y;
+    private int width;
+    private static int height;
 
     public Wall(Handler handler, int x, int y, int width, int height){
-        super(handler, x, y, width, height);
+        this.handler = handler;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+
     }
 
     public void tick() {
@@ -20,9 +27,6 @@ public class Wall extends SceneManager {
     public void render(Graphics g) {
         g.setColor(Color.black);
         g.fillRect(x, y, width, height);
-        g.setColor(Color.white);
-        getLeftWallBounds();
-        g.fillRect(300, y, 200, height);
     }
 
     public int getX() {
@@ -67,7 +71,10 @@ public class Wall extends SceneManager {
 //        return new Rectangle(x, y, 32, 32);
 //    }
 
-    public Rectangle getLeftWallBounds() {
-        return new Rectangle(300, y, 50, height); // bounds gonna be changed
+    public static Rectangle getLeftWallBounds() {
+        return new Rectangle(0, y, 200, height); // bounds gonna be changed
+    }
+    public static Rectangle getRightWallBounds() {
+        return new Rectangle(handler.getWidth()-200, y, 200, height); // bounds gonna be changed
     }
 }

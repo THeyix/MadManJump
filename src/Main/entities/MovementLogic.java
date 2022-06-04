@@ -6,7 +6,7 @@ import java.awt.*;
 
 public abstract class MovementLogic {
 
-    public static final float DEFAULT_SPEED = 1f;
+    public static final float DEFAULT_SPEED = 0.15f;
 
     protected Handler handler;
     protected float x, y;
@@ -29,6 +29,7 @@ public abstract class MovementLogic {
         speed = DEFAULT_SPEED;
 
         boundsLeft = new Rectangle(0, 0, width, height);
+        boundsRight = new Rectangle(0, 0, width, height);
     }
 
     public void move(){
@@ -38,18 +39,27 @@ public abstract class MovementLogic {
 
     public void moveX() {
         if (xMove > 0){ // moving right
-            x += xMove;
+            int tx = (int) (x + xMove + boundsRight.x);
+
+                if(!collisionWithWall(tx, (int) (y + boundsRight.y)) &&
+                    !collisionWithWall(tx, (int) (y + boundsRight.y + boundsRight.height))){
+                x += xMove;
+            }
+                else{
+                    x = tx - boundsRight.x - 1;
+                }
         }
 
         else if(xMove < 0) { //moving left
             int tx = (int) (x + xMove + boundsLeft.x);
 
-            if(!collisionWithWall(tx, (int) (y + boundsLeft.y))){
+                if(!collisionWithWall(tx, (int) (y + boundsLeft.y)) &&
+                    !collisionWithWall(tx, (int) (y + boundsLeft.y + boundsLeft.height))){
                 x += xMove;
             }
-            else{
-                x = tx - boundsLeft.x - 1;
-            }
+                else{
+                    x = tx - boundsLeft.x + 1;
+                }
         }
     }
 
@@ -58,9 +68,11 @@ public abstract class MovementLogic {
     }
 
     protected boolean collisionWithWall(int x, int y){
-//        if(Wall.getLeftWallBounds().intersects(getBoundsLeft())){
-//            return true;
-//        }
+        if(Wall.getLeftWallBounds().intersects(getBoundsLeft())){
+            return true;
+        }else if(Wall.getRightWallBounds().intersects(getBoundsRight())) {
+            return true;
+        }
         return false;
     }
 
