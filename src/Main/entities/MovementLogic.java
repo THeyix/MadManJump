@@ -6,7 +6,7 @@ import java.awt.*;
 
 public abstract class MovementLogic {
 
-    public static final float DEFAULT_SPEED = 0.15f;
+    public static final float DEFAULT_SPEED = 5f;
 
     protected Handler handler;
     protected float x, y;
@@ -15,7 +15,7 @@ public abstract class MovementLogic {
     protected float speed;
     protected boolean falling = true;
     protected boolean jumping = false;
-    protected Rectangle boundsLeft, boundsRight, boundsTop, boundsBottom;
+    protected Rectangle bounds;
 
 
     public MovementLogic(Handler handler, float x, float y, int width, int height){
@@ -28,8 +28,7 @@ public abstract class MovementLogic {
         yMove = 0;
         speed = DEFAULT_SPEED;
 
-        boundsLeft = new Rectangle(0, 0, width, height);
-        boundsRight = new Rectangle(0, 0, width, height);
+        bounds = new Rectangle(0, 0, width, height);
     }
 
     public void move(){
@@ -38,39 +37,78 @@ public abstract class MovementLogic {
     }
 
     public void moveX() {
-        if (xMove > 0){ // moving right
-            int tx = (int) (x + xMove + boundsRight.x);
 
-                if(!collisionWithWall(tx, (int) (y + boundsRight.y)) &&
-                    !collisionWithWall(tx, (int) (y + boundsRight.y + boundsRight.height))){
-                x += xMove;
-            }
-                else{
-                    x = tx - boundsRight.x - 1;
+            int tx = (int) (x + xMove);
+            if (xMove > 0) { // moving right
+
+                if (!collisionWithWall(tx, (int) (y)) &&
+                        !collisionWithWall(tx, (int) (y + bounds.height))) {
+                    x += xMove;
+                } else {
+                    x = tx - 1;
                 }
-        }
+            } else if (xMove < 0) { //moving left
 
-        else if(xMove < 0) { //moving left
-            int tx = (int) (x + xMove + boundsLeft.x);
-
-                if(!collisionWithWall(tx, (int) (y + boundsLeft.y)) &&
-                    !collisionWithWall(tx, (int) (y + boundsLeft.y + boundsLeft.height))){
-                x += xMove;
-            }
-                else{
-                    x = tx - boundsLeft.x + 1;
+                if (!collisionWithWall(tx, (int) (y)) &&
+                        !collisionWithWall(tx, (int) (y + bounds.height))) {
+                    x += xMove;
+                } else {
+                    x = tx + 1;
                 }
+            }
         }
-    }
 
     public void moveY(){
-        y += yMove;
+
+        if(yMove < 0){ // jumping
+            int ty = (int) (y + yMove);
+
+                if(!collisionWithWall((int) (x), ty) &&
+                    !collisionWithWall((int) (x + bounds.width), ty)){
+                y += yMove;
+            }
+                else{
+                    y = ty + 1;
+
+                    if(!collisionWithWall((int) (x), (int) (y)) &&
+                        !collisionWithWall((int) (x + bounds.width), (int) (y))){
+                        falling = false;
+                        yMove = 0;
+                    }
+
+                    else{
+                        falling = true;
+                    }
+                }
+        }
+        else if(yMove > 0){ // falling
+            int ty = (int) (y + yMove);
+
+                if(!collisionWithWall((int) (x), ty) &&
+                    !collisionWithWall((int) (x + bounds.width), ty)){
+                y += yMove;
+            }
+                else{
+                    y = ty - 1;
+
+                    if(!collisionWithWall((int) (x), (int) (y)) &&
+                        !collisionWithWall((int) (x + bounds.width), (int) (y))){
+                        falling = false;
+                        yMove = 0;
+                    }
+
+                        else{
+                            falling = true;
+                        }
+
+                }
+        }
     }
 
     protected boolean collisionWithWall(int x, int y){
-        if(Wall.getLeftWallBounds().intersects(getBoundsLeft())){
+        if(Wall.getLeftWallBounds().contains(x, y)){
             return true;
-        }else if(Wall.getRightWallBounds().intersects(getBoundsRight())) {
+        }else if(Wall.getRightWallBounds().contains(x + 50, y)) {
             return true;
         }
         return false;
@@ -120,35 +158,13 @@ public abstract class MovementLogic {
         this.jumping = jumping;
     }
 
-    public Rectangle getBoundsLeft() {
-        return boundsLeft;
+    public Rectangle getBounds() {
+        return bounds;
     }
 
-    public void setBoundsLeft(Rectangle boundsLeft) {
-        this.boundsLeft = boundsLeft;
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
     }
 
-    public Rectangle getBoundsRight() {
-        return boundsRight;
-    }
 
-    public void setBoundsRight(Rectangle boundsRight) {
-        this.boundsRight = boundsRight;
-    }
-
-    public Rectangle getBoundsTop() {
-        return boundsTop;
-    }
-
-    public void setBoundsTop(Rectangle boundsTop) {
-        this.boundsTop = boundsTop;
-    }
-
-    public Rectangle getBoundsBottom() {
-        return boundsBottom;
-    }
-
-    public void setBoundsBottom(Rectangle boundsBottom) {
-        this.boundsBottom = boundsBottom;
-    }
 }

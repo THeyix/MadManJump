@@ -1,6 +1,5 @@
 package Main;
 
-import Main.Scenes.SceneManager;
 import Main.entities.Wall;
 import Main.input.KeyManager;
 import Main.input.MouseManager;
@@ -8,7 +7,7 @@ import Main.input.MouseManager;
 public class Handler {
 
     private Game game;
-    private SceneManager sceneManager;
+
 
     public Handler(Game game){
         this.game = game;
@@ -36,10 +35,6 @@ public class Handler {
 
     public void setGame(Game game) {
         this.game = game;
-    }
-
-    public SceneManager getSceneManager() {
-        return sceneManager;
     }
 
 }

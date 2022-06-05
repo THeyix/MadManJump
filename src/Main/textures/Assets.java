@@ -8,8 +8,10 @@ public class Assets {
 
 
     public static BufferedImage backgroundImage, optionsBackgroundImage, firstStageBackgroundImage, escBackgroundImage;
-    public static BufferedImage player, startButton, hoveredStartButton, optionsButton, hoveredOptionsButton, exitButton,hoveredExitButton, backButton, hoveredBackButton, resumeButton, hoveredResumeButton, restartButton, hoveredRestartButton, settingsButton, hoveredSettingsButton, menuButton, hoveredMenuButton;
+    public static BufferedImage startButton, hoveredStartButton, optionsButton, hoveredOptionsButton, exitButton,hoveredExitButton, backButton, hoveredBackButton, resumeButton, hoveredResumeButton, restartButton, hoveredRestartButton, settingsButton, hoveredSettingsButton, menuButton, hoveredMenuButton;
     public static BufferedImage[] exit, start, options, back, resume, settings, menu;
+    public static BufferedImage player, crouchPlayer;
+    public static BufferedImage[] jumpingAnimation;
 
     public static void init(){
 
@@ -49,6 +51,10 @@ public class Assets {
         escBackgroundImage = ImageLoader.loadImage("res/background/escBackgroundImage.png");
 
         player = ImageLoader.loadImage("res/playerModels/mainPlayer.png");
+        crouchPlayer = ImageLoader.loadImage("res/playerModels/crouchPlayer.png");
+
+        jumpingAnimation = new BufferedImage[]{player, crouchPlayer};
+
 
 
     }

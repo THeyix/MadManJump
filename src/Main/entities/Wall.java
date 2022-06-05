@@ -7,9 +7,9 @@ import java.awt.*;
 public class Wall {
     private static Handler handler;
     private int x;
-    private static int y;
+    private int y;
     private int width;
-    private static int height;
+    private int height;
 
     public Wall(Handler handler, int x, int y, int width, int height){
         this.handler = handler;
@@ -61,20 +61,13 @@ public class Wall {
         this.height = height;
     }
 
-//    public Rectangle getBounds(){
-//        return new Rectangle(x, y, 32, 32);
-//    }
-//    public Rectangle getBoundsTop(){
-//        return new Rectangle(x, y, 32, 32);
-//    }
-//    public Rectangle getBoundsRight(){
-//        return new Rectangle(x, y, 32, 32);
-//    }
-
     public static Rectangle getLeftWallBounds() {
-        return new Rectangle(0, y, 200, height); // bounds gonna be changed
+        return new Rectangle(0, 0, 200, handler.getHeight()); // bounds gonna be changed
     }
     public static Rectangle getRightWallBounds() {
-        return new Rectangle(handler.getWidth()-200, y, 200, height); // bounds gonna be changed
+        return new Rectangle(handler.getWidth()-200, 0, 200, handler.getHeight()); // bounds gonna be changed
+    }
+    public static Rectangle getBottomWallBounds() {
+        return new Rectangle(0, handler.getHeight()-200, handler.getWidth(), 200); // bounds gonna be changed
     }
 }
