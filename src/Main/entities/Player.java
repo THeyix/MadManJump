@@ -9,16 +9,28 @@ import Main.textures.Assets;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Vector;
 
 public class Player extends MovementLogic{
 
     private boolean falling = true;
     protected boolean jumping = false;
-    protected float velX = 0, velY = 0;
-    private float gravity = 5f;
+//    protected float velX = 0, velY = 0;
+//    private float gravity = 5f;
     private Animation playerAnimation;
+//-------------------------------------------------------------------new movement
 
+    private Point playerPosition = new Point(600,600);
+    private Vector velX = new Vector((int) x, 2);
+    private Vector velY = new Vector((int) y, 2);
+    private Vector gravity = new Vector((int) y, -2);
 
+    private float currentTime;
+    private float lastTime = 0;
+    private float deltaTime;
+
+//    TODO redo the movement logic with vectors and add vector math (multiply vectors = vector.x * pvz 5)
+//    ----------------------------------------------------------------
     public Player(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
 
@@ -48,8 +60,21 @@ public class Player extends MovementLogic{
         getInput();
         move();
 
-        x += velX;
-        y += velY;
+//        x += velX;
+//        y += velY;
+// ------------------------------------------------------- new movement
+        lastTime = currentTime;
+        currentTime = System.currentTimeMillis();
+
+        deltaTime = currentTime - lastTime;
+
+        if(deltaTime > 0.15f) {
+            deltaTime = 0.15f;
+        }
+
+        playerPosition = playerPosition + deltaTime * velX;
+
+//        ----------------------------------------------------------------------
 
         if(Wall.getLeftWallBounds().contains(x, y)){
             x = Wall.getLeftWallBounds().x + Wall.getLeftWallBounds().width + 1;
@@ -58,20 +83,20 @@ public class Player extends MovementLogic{
             x = Wall.getRightWallBounds().x - 50;
         }
 
-        if(falling || jumping) {
-
-            velY += gravity;
-            if (velY > 10f) {
-                velY = 5f;
-            }
-            if(Wall.getBottomWallBounds().contains(x, y + 80)) {
-                falling = false;
-                velY = 0;
-                y = Wall.getBottomWallBounds().y - 80;
-            }else {
-                falling = true;
-            }
-        }
+//        if(falling || jumping) {
+//
+//            velY += gravity;
+//            if (velY > 10f) {
+//                velY = 5f;
+//            }
+//            if(Wall.getBottomWallBounds().contains(x, y + 80)) {
+//                falling = false;
+//                velY = 0;
+//                y = Wall.getBottomWallBounds().y - 80;
+//            }else {
+//                falling = true;
+//            }
+//        }
     }
 
     public void getInput() {
