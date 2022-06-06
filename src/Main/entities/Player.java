@@ -93,7 +93,6 @@ public class Player extends MovementLogic{
         }
 
         if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SPACE) && !falling) {
-
             yMove = -speed*50;
             jumping = true;
 

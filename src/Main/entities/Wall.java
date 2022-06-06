@@ -6,10 +6,8 @@ import java.awt.*;
 
 public class Wall {
     private static Handler handler;
-    private int x;
-    private int y;
-    private int width;
-    private int height;
+    private int x, y;
+    private int width, height;
 
     public Wall(Handler handler, int x, int y, int width, int height){
         this.handler = handler;
