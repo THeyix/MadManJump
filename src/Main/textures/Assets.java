@@ -47,7 +47,7 @@ public class Assets {
 
         backgroundImage = ImageLoader.loadImage("res/background/mainMenuImage.png");
         optionsBackgroundImage = ImageLoader.loadImage("res/background/optionsBackgroundImage.png");
-        firstStageBackgroundImage = ImageLoader.loadImage("res/background/mainMenu_bg.png");
+        firstStageBackgroundImage = ImageLoader.loadImage("res/background/1_StageBG.png");
         escBackgroundImage = ImageLoader.loadImage("res/background/escBackgroundImage.png");
 
         player = ImageLoader.loadImage("res/playerModels/mainPlayer.png");

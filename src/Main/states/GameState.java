@@ -47,7 +47,7 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.firstStageBackgroundImage, 0,0, handler.getWidth(), handler.getHeight(), null);
+        g.drawImage(Assets.firstStageBackgroundImage, 200,0, handler.getWidth()-400, handler.getHeight()-200, null);
 
         leftWall.render(g);
         rightWall.render(g);
