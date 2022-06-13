@@ -10,11 +10,13 @@ import Main.textures.Assets;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.security.Key;
 
 public class Player extends MovementLogic{
 
-    private boolean falling = true;
+    protected boolean falling = true;
     protected boolean jumping = false;
+
     protected float velX = 0, velY = 0;
     private float gravity = 5f;
     //private Animation playerAnimation;
@@ -105,11 +107,11 @@ public class Player extends MovementLogic{
         yMove = 0;
 
         if (handler.getKeyManager().left && (!falling || !jumping)) {
-            xMove = -speed;
+            xMove = -DEFAULT_SPEED;
         }
 
         if (handler.getKeyManager().right && (!falling || !jumping)) {
-            xMove = speed;
+            xMove = DEFAULT_SPEED;
         }
 
         if (handler.getKeyManager().escape) {
@@ -118,12 +120,32 @@ public class Player extends MovementLogic{
             State.setState(new EscState(handler));
         }
 
-        if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SPACE) && !falling) {
-
-            yMove -= 150;
+        if (handler.getKeyManager().jump && handler.getKeyManager().right && !falling) {
+//            yMove -= 150; adomo solution... dumbo
+            velY = -40f;
+            velX = 10f;
             jumping = true;
-
+            falling = true;
         }
+
+        if (handler.getKeyManager().jump && handler.getKeyManager().left && !falling) {
+            velY = -40f;
+            velX = -10f;
+            jumping = true;
+            falling = true;
+        }
+
+        if (handler.getKeyManager().jump && !falling) {
+            velY = -40f;
+            jumping = true;
+            falling = true;
+        }
+
+
+
+//        if(handler.getKeyManager(). && velY > 0){
+//
+//        }
     }
 
     @Override
@@ -134,17 +156,19 @@ public class Player extends MovementLogic{
 //            g.drawImage(Assets.jumpingAnimation[0], (int) x, (int) y, 50, 80, null);
 //        }
 
+        //-------------------------------------------------------------------------------------
 //        g.setColor(Color.red);
 //        g.fillRect((int) x - (bounds.x - 9), (int) y - bounds.y, bounds.width, bounds.height);
-
-        Graphics2D g2d = (Graphics2D) g;
-        g.setColor(Color.WHITE);
+//
+//        Graphics2D g2d = (Graphics2D) g;
+//        g.setColor(Color.WHITE);
 //        g2d.draw(getBounds());
 //        g2d.draw(getBoundsTop());
 //        g2d.draw(getBoundsLeft());
 //        g2d.draw(getBounds());
 
     }
+    //-------------------------------------------------------------------------------------------------------
 
 //    public Rectangle getBounds(){
 //        return new Rectangle((int) x - (boundsLeft.x - 9), (int) y - boundsLeft.y, boundsLeft.width - 18, boundsLeft.height);
