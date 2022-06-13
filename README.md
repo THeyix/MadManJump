@@ -1,2 +1,2 @@
 # MadManJump
-Jump King game
+Replica of the Jump King game
