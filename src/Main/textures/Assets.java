@@ -50,8 +50,8 @@ public class Assets {
         firstStageBackgroundImage = ImageLoader.loadImage("res/background/1_StageBG.png");
         escBackgroundImage = ImageLoader.loadImage("res/background/escBackgroundImage.png");
 
-        player = ImageLoader.loadImage("res/playerModels/mainPlayer.png");
-        crouchPlayer = ImageLoader.loadImage("res/playerModels/crouchPlayer.png");
+        player = ImageLoader.loadImage("res/playerModels/Stand.png");
+//        crouchPlayer = ImageLoader.loadImage("res/playerModels/crouchPlayer.png");
 
         jumpingAnimation = new BufferedImage[]{player, crouchPlayer};
 

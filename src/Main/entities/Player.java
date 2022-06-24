@@ -14,11 +14,17 @@ import java.security.Key;
 
 public class Player extends MovementLogic{
 
-    protected boolean falling = true;
-    protected boolean jumping = false;
+    protected boolean onGround = false;
+    protected boolean canJump = true;
+    protected float jumpValue = 0;
+
+    public static boolean spaceReleased = false;
+    public static boolean rightReleased = false;
+    public static boolean leftReleased = false;
 
     protected float velX = 0, velY = 0;
     private float gravity = 5f;
+
     //private Animation playerAnimation;
 
 //-------------------------------------------------------------------new movement
@@ -86,18 +92,18 @@ public class Player extends MovementLogic{
             x = Wall.getRightWallBounds().x - 50;
         }
 
-        if(falling || jumping) {
+        if(!onGround) {
 
             velY += gravity;
             if (velY > 10f) {
-                velY = 5f;
+                velY = 10f;
             }
             if(Wall.getBottomWallBounds().contains(x, y + 80)) {
-                falling = false;
+                onGround = true;
                 velY = 0;
                 y = Wall.getBottomWallBounds().y - 80;
             }else {
-                falling = true;
+                onGround = false;
             }
         }
     }
@@ -106,46 +112,65 @@ public class Player extends MovementLogic{
         xMove = 0;
         yMove = 0;
 
-        if (handler.getKeyManager().left && (!falling || !jumping)) {
+        if(onGround){
+            velY = 0;
+            velX = 0;
+        }
+
+        if(handler.getKeyManager().left && onGround && jumpValue==0) {
             xMove = -DEFAULT_SPEED;
         }
 
-        if (handler.getKeyManager().right && (!falling || !jumping)) {
+        if(handler.getKeyManager().right && onGround && jumpValue==0) {
             xMove = DEFAULT_SPEED;
         }
 
-        if (handler.getKeyManager().escape) {
+        if(handler.getKeyManager().escape) {
             handler.getMouseManager().setUiManager(null);
             handler.getMouseManager().setUiManager(new UIManager(handler));
             State.setState(new EscState(handler));
         }
 
-        if (handler.getKeyManager().jump && handler.getKeyManager().right && !falling) {
-//            yMove -= 150; adomo solution... dumbo
-            velY = -40f;
-            velX = 10f;
-            jumping = true;
-            falling = true;
+        if(handler.getKeyManager().jump && onGround && canJump) {
+            jumpValue += 0.3f;
+            xMove = 0;
+            //System.out.println("jumpValue: " + jumpValue);
         }
 
-        if (handler.getKeyManager().jump && handler.getKeyManager().left && !falling) {
-            velY = -40f;
-            velX = -10f;
-            jumping = true;
-            falling = true;
+        if(jumpValue >= 15 && onGround){
+            jumpValue = 15;
         }
 
-        if (handler.getKeyManager().jump && !falling) {
-            velY = -40f;
-            jumping = true;
-            falling = true;
+        if(spaceReleased && onGround && canJump && !handler.getKeyManager().right && !handler.getKeyManager().left) {
+            velY = -jumpValue * 3f;
+            jumpValue = 0;
+
+            canJump = true;
+            onGround = false;
+            spaceReleased = false;
         }
 
+        if(spaceReleased && onGround && canJump && handler.getKeyManager().right) {
+            velX += 10f;
+            velY = -jumpValue * 3f;
+            jumpValue = 0;
 
+            canJump = true;
+            onGround = false;
+            spaceReleased = false;
+            rightReleased = false;
+        }
 
-//        if(handler.getKeyManager(). && velY > 0){
-//
-//        }
+        if(spaceReleased && onGround && canJump && handler.getKeyManager().left) {
+            velX -= 10f;
+            velY = -jumpValue * 3f;
+            jumpValue = 0;
+
+            canJump = true;
+            onGround = false;
+            spaceReleased = false;
+            rightReleased = false;
+        }
     }
 
     @Override
@@ -179,5 +204,17 @@ public class Player extends MovementLogic{
 
     public Rectangle getBounds(){
         return new Rectangle((int) x - (bounds.x - 9), (int) y - bounds.y, bounds.width , bounds.height);
+    }
+
+    public static void setSpaceReleased(boolean spaceReleased) {
+        Player.spaceReleased = spaceReleased;
+    }
+
+    public static void setRightReleased(boolean rightReleased) {
+        Player.rightReleased = rightReleased;
+    }
+
+    public static void setLeftReleased(boolean leftReleased) {
+        Player.leftReleased = leftReleased;
     }
 }
