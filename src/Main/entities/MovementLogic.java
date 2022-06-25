@@ -12,7 +12,6 @@ public abstract class MovementLogic {
     protected float x, y;
     protected float xMove, yMove;
     protected int width, height;
-//    protected float speed;
     protected boolean falling = true;
     protected boolean jumping = false;
     protected Rectangle bounds;
@@ -26,7 +25,6 @@ public abstract class MovementLogic {
         this.height = height;
         xMove = 0;
         yMove = 0;
-//        speed = DEFAULT_SPEED;
 
         bounds = new Rectangle(0, 0, width, height);
     }
@@ -106,9 +104,7 @@ public abstract class MovementLogic {
     }
 
     protected boolean collisionWithWall(int x, int y){
-        if(Wall.getLeftWallBounds().contains(x, y)){
-            return true;
-        }else if(Wall.getRightWallBounds().contains(x + 50, y)) {
+        if(Wall.getLeftWallBounds().contains(x, y) || Wall.getRightWallBounds().contains(x + 60, y)){
             return true;
         }
         return false;
@@ -133,14 +129,6 @@ public abstract class MovementLogic {
     public void setyMove(float yMove) {
         this.yMove = yMove;
     }
-
-//    public float getSpeed() {
-//        return speed;
-//    }
-//
-//    public void setSpeed(float speed) {
-//        this.speed = speed;
-//    }
 
     public boolean isFalling() {
         return falling;
