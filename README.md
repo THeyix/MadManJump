@@ -1,5 +1,5 @@
 # MadManJump
-Replica of the Jump King game
+Replica of the Jump King game using only Java
 
 ![Screenshot_1](https://user-images.githubusercontent.com/99810004/227736306-8c66bdfc-ad67-4a84-9c2f-c144168c8e34.png)
 
